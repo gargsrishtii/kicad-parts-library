@@ -6,16 +6,18 @@ projects.
 
 ## Why this exists
 
-Some parts (especially modules from smaller manufacturers like REYAX) aren't
-available in KiCad's default libraries or on SnapEDA/EasyEDA. This repo
-collects symbols and footprints I've built and verified against datasheets,
-so they're reusable for future projects and for anyone else who needs them.
+Some parts (especially modules from smaller manufacturers, or dev boards not
+in the default libraries) aren't available in KiCad's default libraries or
+on SnapEDA/EasyEDA in a verified form. This repo collects symbols and
+footprints I've built and verified against datasheets/manufacturer data, so
+they're reusable for future projects and for anyone else who needs them.
 
 ## Contents
 
-| Part | Manufacturer | Package | Datasheet |
+| Part | Manufacturer | Package | Source |
 |---|---|---|---|
 | RYLR998 | REYAX | 5-pin castellated SMD, 2.54mm pitch | [Datasheet](https://reyax.com/upload/products_download/download_file/RYLR998_EN.pdf) |
+| ESP32-DEVKITC-VE | Espressif | 38-pin dual row THT header, 2.54mm pitch, 25.4mm row spacing | [Espressif Docs](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html) |
 
 ## How to use this library in KiCad
 
@@ -32,17 +34,25 @@ so they're reusable for future projects and for anyone else who needs them.
 
 ## Verification notes
 
-Each part's pinout is taken directly from the manufacturer's datasheet.
-Footprint pad dimensions are measured from datasheet mechanical drawings
-where available; any estimated dimensions are flagged in that part's section
-below. Always verify footprint fit against a physical part before sending
-a board to fabrication.
+Each part's pinout is taken directly from the manufacturer's datasheet or
+verified component data (e.g. cross-checked against EasyEDA's library entry
+for the ESP32-DevKitC-VE). Footprint pad dimensions are measured where
+possible; any estimated dimensions are flagged below. Always verify
+footprint fit against a physical part before sending a board to fabrication.
 
 ### RYLR998
 - Pinout confirmed from datasheet page 3 (pin description table)
 - Pad pitch (2.54mm) confirmed from datasheet mechanical drawing
 - Pad width/depth are reasonable estimates - verify against physical module
   before fab
+
+### ESP32-DEVKITC-VE
+- Pinout (38 pins) confirmed against EasyEDA's verified ESP32-DEVKITC-VE.1
+  component
+- Pin pitch (2.54mm) and row spacing (25.4mm / 1.0") confirmed by direct
+  pad coordinate measurement in EasyEDA footprint editor
+- Pad diameter (1.5mm) and drill size (0.8mm) are standard header-pin
+  estimates - verify against physical board pin holes before fab
 
 ## Contributing
 
